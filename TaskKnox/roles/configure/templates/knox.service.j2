@@ -3,7 +3,7 @@ Description=Apache Knox Service
 
 [Service]
 Type=simple
-PIDFile={{ knox.path }}/pids/file
+PIDFile={{ knox.path }}/pids/gateway.pid
 ExecStart={{ knox.path }}/bin/gateway.sh start
 ExecStop={{ knox.path }}/bin/gateway.sh stop
 User={{ knox.ta }}

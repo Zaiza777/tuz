@@ -20,6 +20,11 @@
     loop:
       - "gateway-site.xml"
 
+  - name: Del jceks
+    file:
+      dest: "{{ knox.path}}/data/security/keystores/__gateway-credentials.jceks"
+      state: absent
+      
   - name: Create-master key
     shell: "{{ knox.path }}/bin/knoxcli.sh create-master --force --generate"
     notify:
@@ -28,11 +33,8 @@
   - name: Start ldap
     shell: "{{ knox.path }}/bin/ldap.sh start"
     
-  - name: Del jceks
-    file:
-      dest: "{{ knox.path}}/data/security/keystores/__gateway-credentials.jceks"
-      state: absent
-      
+
+
   - name: Service Knox
     template:
       src: "knox.service.j2"

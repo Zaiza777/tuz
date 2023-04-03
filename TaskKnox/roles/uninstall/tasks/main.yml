@@ -3,6 +3,7 @@
     service: 
       name: knox.service
       state: stopped
+    ignore_errors: true
   
   - name: Remove Folder
     file:
